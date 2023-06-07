@@ -33,10 +33,7 @@ class TaskCompleteView(View):
     def post(request, pk) -> HttpResponseRedirect:
         task = Task.objects.get(pk=pk)
 
-        if not task.is_completed:
-            task.is_completed = True
-        else:
-            task.is_completed = False
+        task.is_completed = not task.is_completed
 
         task.save()
 
