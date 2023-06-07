@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}Task{% endblock %}
+
+{% block content %}
+  {% if task %}
+    <h1 class="mt-3">Update task</h1>
+    {% else %}
+    <h1 class="mt-3">Create new task</h1>
+  {% endif %}
+
+  <form action="#" class="w-50" method="post">
+    {{ form|crispy }}
+    {% csrf_token %}
+
+    {% if task %}
+      <input type="submit" value="Update" class="btn btn-primary">
+      {% else %}
+      <input type="submit" value="Create" class="btn btn-primary">
+    {% endif %}
+  </form>
+{% endblock %}
